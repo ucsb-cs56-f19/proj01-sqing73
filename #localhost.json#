@@ -1,0 +1,5 @@
+{
+    "spring.security.oauth2.client.registration.github.client-id":,
+    "spring.security.oauth2.client.registration.github.client-secret":"copy-from-github",
+    "app_github_org":"ucsb-cs56-f19"
+}
