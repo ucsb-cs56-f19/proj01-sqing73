@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.Map;
 import java.util.HashMap;
 
+
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
+import hello.geojson.FeatureCollection;
 @Controller
 public class WebController {
 
@@ -30,7 +32,8 @@ public class WebController {
         Map<String, String> urls = new HashMap<>();
 
         // get around an unfortunate limitation of the API
-        @SuppressWarnings("unchecked") Iterable<ClientRegistration> iterable = ((Iterable<ClientRegistration>) clientRegistrationRepository);
+        @SuppressWarnings("unchecked")
+        Iterable<ClientRegistration> iterable = ((Iterable<ClientRegistration>) clientRegistrationRepository);
         iterable.forEach(clientRegistration -> urls.put(clientRegistration.getClientName(),
                 "/oauth2/authorization/" + clientRegistration.getRegistrationId()));
 
@@ -50,7 +53,7 @@ public class WebController {
         return "page2";
     }
 
-     @GetMapping("/earthquakes/search")
+    @GetMapping("/earthquakes/search")
     public String getEarthquakesSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             EqSearch eqSearch) {
         return "earthquakes/search";
@@ -59,14 +62,12 @@ public class WebController {
     @GetMapping("/earthquakes/results")
     public String getEarthquakesResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             EqSearch eqSearch) {
-        EarthquakeQueryService e =
-           new EarthquakeQueryService();        
+        EarthquakeQueryService e = new EarthquakeQueryService();
         model.addAttribute("eqSearch", eqSearch);
-        // TODO: Actually do the search here and add results to the model
         String json = e.getJSON(eqSearch.getDistance(), eqSearch.getMinmag());
         model.addAttribute("json", json);
+        FeatureCollection featureCollection = FeatureCollection.fromJSON(json);
+        model.addAttribute("featureCollection",featureCollection);
         return "earthquakes/results";
     }
-
-
 }
