@@ -1,24 +1,30 @@
 package hello;
 
 public class EqSearch{
+
     private int distance;
     private int minmag;
-
-    public EqSearch(){}
+    
+    public EqSearch(){
+	    this.distance = 0;
+	    this.minmag = 0;
+    }
 
     public int getDistance(){
-        return this.distance;
+	    return this.distance;
     }
-
+    
     public int getMinmag(){
-        return this.minmag;
+	    return this.minmag;
     }
 
+   
+    
     public void setDistance(int d){
-        this.distance = d;
+	this.distance = d;
     }
-
+    
     public void setMinmag(int m){
-        this.minmag = m;
+	this.minmag = m;
     }
 }
