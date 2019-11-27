@@ -1,5 +1,11 @@
 javadoc: https://ucsb-cs56-f19.github.io/lab07-sqing73/
 
+Githib repo: https://github.com/ucsb-cs56-f19/lab07-sqing73/blob/master/README.md
+
+App: https://cs56-f19-lab07-sqing73.herokuapp.com
+
+Travis-Ci: https://travis-ci.org
+
 A simple Spring Boot webapp using:
 * Thymeleaf templating
 * Pulling in Bootstrap from CDN.
