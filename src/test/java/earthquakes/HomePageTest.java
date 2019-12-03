@@ -86,6 +86,8 @@ public class HomePageTest {
                 .andExpect(xpath("/html/body/div/nav/div/ul[1]/li[2]/a").string("Locations"));
     }
 
+    
+
     @Test
     public void getHomePage_hasUsersLink() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.TEXT_HTML))

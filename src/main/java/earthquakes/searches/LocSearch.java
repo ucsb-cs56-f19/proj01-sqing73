@@ -4,8 +4,7 @@ public class LocSearch{
 
     private String location;
     
-    LocSearch(){
-    }
+    public LocSearch(){}
 
     public String getLocation(){
 	    return this.location;
