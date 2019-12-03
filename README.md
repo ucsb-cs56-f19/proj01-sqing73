@@ -4,7 +4,7 @@ Githib repo: https://github.com/ucsb-cs56-f19/proj01-sqing73
 
 App: https://cs56-f19-proj01-sqing73.herokuapp.com
 
-Travis-Ci: https://travis-ci.org/ucsb-cs56-f19/proj01-sqing73/builds/619927031
+Travis-Ci: https://travis-ci.org/ucsb-cs56-f19/proj01-sqing73
 
 A simple Spring Boot webapp using:
 * Thymeleaf templating
