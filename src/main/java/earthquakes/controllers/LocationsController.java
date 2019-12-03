@@ -41,6 +41,7 @@ public class LocationsController {
         String json = l.getJSON(locSearch.getLocation());
         model.addAttribute("json",json);
         List<Place> Places = Place.listFromJson(json);
+        model.addAttribute("Places", Places);
         return "locations/results";
     }
 }
