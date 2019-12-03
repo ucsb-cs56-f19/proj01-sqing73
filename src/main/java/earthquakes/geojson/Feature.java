@@ -1,5 +1,5 @@
 
-package hello.geojson;
+package earthquakes.geojson;
 
 public class Feature {
   public String type;
