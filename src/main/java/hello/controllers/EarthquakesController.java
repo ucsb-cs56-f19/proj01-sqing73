@@ -15,8 +15,9 @@ import java.util.HashMap;
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
 import hello.geojson.FeatureCollection;
-import hello.EqSearch;
+
 import hello.services.*;
+import hello.searches.*;
 
 
 
