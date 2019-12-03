@@ -1,6 +1,6 @@
 javadoc: https://ucsb-cs56-f19.github.io/proj01-sqing73/
 
-Githib repo: https://github.com/ucsb-cs56-f19/proj01-sqing73/blob/master/README.md
+Githib repo: https://github.com/ucsb-cs56-f19/proj01-sqing73
 
 App: https://cs56-f19-proj01-sqing73.herokuapp.com
 
