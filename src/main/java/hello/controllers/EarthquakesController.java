@@ -14,8 +14,9 @@ import java.util.HashMap;
 
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
 
-import hello.EarthquakeQueryService;
+import hello.geojson.FeatureCollection;
 import hello.EqSearch;
+import hello.services.*;
 
 
 
