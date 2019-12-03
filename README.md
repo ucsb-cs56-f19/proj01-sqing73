@@ -1,10 +1,10 @@
-javadoc: https://ucsb-cs56-f19.github.io/lab07-sqing73/
+javadoc: https://ucsb-cs56-f19.github.io/proj01-sqing73/
 
-Githib repo: https://github.com/ucsb-cs56-f19/lab07-sqing73/blob/master/README.md
+Githib repo: https://github.com/ucsb-cs56-f19/proj01-sqing73/blob/master/README.md
 
-App: https://cs56-f19-lab07-sqing73.herokuapp.com
+App: https://cs56-f19-proj01-sqing73.herokuapp.com
 
-Travis-Ci: https://travis-ci.org
+Travis-Ci: https://travis-ci.org/ucsb-cs56-f19/proj01-sqing73/builds/619927031
 
 A simple Spring Boot webapp using:
 * Thymeleaf templating
