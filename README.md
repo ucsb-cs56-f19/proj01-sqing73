@@ -1,13 +1,9 @@
-A simple Spring Boot webapp using:
-* Thymeleaf templating
-* Pulling in Bootstrap from CDN.
-* Github OAuth
 
-Link to my documentation web page: https://ucsb-cs56-f19.github.io/proj01-zhiyuning/docs
+Link to my documentation web page: https://ucsb-cs56-f19.github.io/proj01-sqing73/docs
 
-Link to my Heroku app: https://cs56-f19-proj01-zhiyuning.herokuapp.com/
+Link to my Heroku app: https://cs56-f19-proj01-sqing73.herokuapp.com/
 
-Link to my Travis CI page: https://travis-ci.org/ucsb-cs56-f19/proj01-zhiyuning/builds/620471978
+Link to my Travis CI page: https://travis-ci.org/ucsb-cs56-f19/proj01-sqing73
 
 # Running on Localhost.
 
