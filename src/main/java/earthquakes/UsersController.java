@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import earthquakes.entities.AppUser;
 import earthquakes.repositories.UserRepository;
-import earthquakes.services.*;
+
 @Controller
 public class UsersController {
 

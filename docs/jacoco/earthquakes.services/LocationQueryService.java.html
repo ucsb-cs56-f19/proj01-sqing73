@@ -19,39 +19,34 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 
-<span class="nc" id="L22">public class LocationQueryService {</span>
 
-<span class="nc" id="L24">    private Logger logger = LoggerFactory.getLogger(LocationQueryService.class);</span>
+<span class="nc" id="L23">public class LocationQueryService {</span>
+
+<span class="nc" id="L25">    private Logger logger = LoggerFactory.getLogger(LocationQueryService.class);</span>
 
     public String getJSON(String location) {
-<span class="nc" id="L27">        RestTemplate restTemplate = new RestTemplate();</span>
-<span class="nc" id="L28">         HttpHeaders headers = new HttpHeaders();</span>
-<span class="nc" id="L29">         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));</span>
-<span class="nc" id="L30">         headers.setContentType(MediaType.APPLICATION_JSON);</span>
+<span class="nc" id="L28">	RestTemplate restTemplate = new RestTemplate();</span>
 
-<span class="nc" id="L32">         headers.setContentType(MediaType.APPLICATION_JSON);</span>
+<span class="nc" id="L30">        HttpHeaders headers = new HttpHeaders();</span>
+<span class="nc" id="L31">        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));</span>
+<span class="nc" id="L32">        headers.setContentType(MediaType.APPLICATION_JSON);</span>
 
-<span class="nc" id="L34">         HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(&quot;body&quot;, headers);</span>
+<span class="nc" id="L34">        HttpEntity&lt;String&gt; entity = new HttpEntity&lt;&gt;(&quot;body&quot;, headers);</span>
+<span class="nc" id="L35">        String url = &quot;https://nominatim.openstreetmap.org/search/&quot;+location+&quot;?format=json&quot;;</span>
+<span class="nc" id="L36">        logger.info(&quot;url=&quot; + url);</span>
 
-<span class="nc" id="L36">         String uri = &quot;https://nominatim.openstreetmap.org/search/&quot;;</span>
-<span class="nc" id="L37">         String params = &quot;&quot;;</span>
-<span class="nc" id="L38">         String end = &quot;?format=json&quot;;</span>
-<span class="nc" id="L39">         params = location;</span>
-
-<span class="nc" id="L41">         String url = uri + params + end;</span>
-<span class="nc" id="L42">         logger.info(&quot;url=&quot; + url);</span>
-
-<span class="nc" id="L44">         String retVal=&quot;&quot;;</span>
-         try {   
-<span class="nc" id="L46">             ResponseEntity&lt;String&gt; re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);</span>
-<span class="nc" id="L47">             MediaType contentType = re.getHeaders().getContentType();</span>
-<span class="nc" id="L48">             HttpStatus statusCode = re.getStatusCode();</span>
-<span class="nc" id="L49">             retVal = re.getBody();</span>
-<span class="nc" id="L50">         } catch (HttpClientErrorException e) {</span>
-<span class="nc" id="L51">             retVal = &quot;{\&quot;error\&quot;: \&quot;401: Unauthorized\&quot;}&quot;;</span>
-<span class="nc" id="L52">         }</span>
-<span class="nc" id="L53">         logger.info(&quot;from LocationQueryService.getJSON: &quot; + retVal);</span>
-<span class="nc" id="L54">         return retVal;</span>
+<span class="nc" id="L38">        String retVal=&quot;&quot;;</span>
+        try {
+<span class="nc" id="L40">            ResponseEntity&lt;String&gt; re = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);</span>
+<span class="nc" id="L41">             MediaType contentType = re.getHeaders().getContentType();</span>
+<span class="nc" id="L42">            HttpStatus statusCode = re.getStatusCode();</span>
+<span class="nc" id="L43">            retVal = re.getBody();</span>
+<span class="nc" id="L44">        } catch (HttpClientErrorException e) {</span>
+<span class="nc" id="L45">            retVal = &quot;{\&quot;error\&quot;: \&quot;401: Unauthorized\&quot;}&quot;;</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc" id="L47">        logger.info(&quot;from LocationQueryService.getJSON: &quot; + retVal);</span>
+<span class="nc" id="L48">        return retVal;</span>
     }
-} 
+
+}
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

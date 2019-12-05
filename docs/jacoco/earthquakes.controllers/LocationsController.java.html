@@ -8,41 +8,44 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 
 import com.nimbusds.oauth2.sdk.client.ClientReadRequest;
-import earthquakes.geojson.FeatureCollection;
+
 import earthquakes.searches.LocSearch;
-import earthquakes.services.EarthquakeQueryService;
-import earthquakes.searches.EqSearch;
 import earthquakes.services.LocationQueryService;
 import earthquakes.osm.Place;
+
+import earthquakes.geojson.FeatureCollection;
+
+
 @Controller
-<span class="nc" id="L23">public class LocationsController {</span>
+<span class="nc" id="L26">public class LocationsController {</span>
 
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
 
     @GetMapping(&quot;/locations/search&quot;)
-    public String getLocationSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
+    public String getLocationsSearch(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
             LocSearch locSearch) {
-<span class="nc" id="L31">        return &quot;locations/search&quot;;</span>
+<span class="nc" id="L34">        return &quot;locations/search&quot;;</span>
     }
 
+
     @GetMapping(&quot;/locations/results&quot;)
-    public String getLocationResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
-            LocSearch locSearch) {
+    public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
+          LocSearch locSearch) {
 
-<span class="nc" id="L38">        LocationQueryService l = new LocationQueryService();</span>
-
-<span class="nc" id="L40">        model.addAttribute(&quot;locSearch&quot;, locSearch);</span>
-<span class="nc" id="L41">        String json = l.getJSON(locSearch.getLocation());</span>
-<span class="nc" id="L42">        model.addAttribute(&quot;json&quot;,json);</span>
-<span class="nc" id="L43">        List&lt;Place&gt; Places = Place.listFromJson(json);</span>
-<span class="nc" id="L44">        model.addAttribute(&quot;Places&quot;, Places);</span>
-<span class="nc" id="L45">        return &quot;locations/results&quot;;</span>
+<span class="nc" id="L42">      LocationQueryService l = new LocationQueryService();</span>
+<span class="nc" id="L43">      model.addAttribute(&quot;locSearch&quot;, locSearch);</span>
+<span class="nc" id="L44">      String json = l.getJSON(locSearch.getLocation());</span>
+<span class="nc" id="L45">      model.addAttribute(&quot;json&quot;, json);</span>
+<span class="nc" id="L46">      List&lt;Place&gt; place = Place.listFromJson(json);</span>
+<span class="nc" id="L47">      model.addAttribute(&quot;place&quot;, place);</span>
+<span class="nc" id="L48">      return &quot;locations/results&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

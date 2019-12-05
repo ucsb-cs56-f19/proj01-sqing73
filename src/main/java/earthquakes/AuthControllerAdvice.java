@@ -1,30 +1,29 @@
 package earthquakes;
 
-import earthquakes.repositories.UserRepository;
-import earthquakes.entities.AppUser;
-import java.util.List;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-
-import earthquakes.services.*;
+import earthquakes.repositories.UserRepository;
+import earthquakes.entities.AppUser;
+import java.util.List;
+import earthquakes.services.MembershipService;
 
 @ControllerAdvice
 public class AuthControllerAdvice {
-    @Autowired   
-    private UserRepository userRepository;
-
 
     @Autowired   
     private MembershipService membershipService;
+
+    @Autowired   
+    private UserRepository userRepository;
 
     @ModelAttribute("isLoggedIn")
     public boolean getIsLoggedIn(OAuth2AuthenticationToken token){
         return token != null;
     }
+
 
     @ModelAttribute("id")
     public String getUid(OAuth2AuthenticationToken token){
@@ -43,6 +42,7 @@ public class AuthControllerAdvice {
 
         return uid;
     }
+
 
     @ModelAttribute("login")
     public String getLogin(OAuth2AuthenticationToken token){

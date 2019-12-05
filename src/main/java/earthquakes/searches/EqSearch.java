@@ -1,58 +1,53 @@
 package earthquakes.searches;
 
 public class EqSearch{
-
     private int distance;
     private int minmag;
     private double lat;
     private double lon;
     private String location;
+
     
     
-    public EqSearch(){
-	    this.distance = 0;
-	    this.minmag = 0;
+    public int getDistance(){
+	return distance;
     }
 
-    public int getDistance(){
-	    return this.distance;
-    }
-    
     public int getMinmag(){
-	    return this.minmag;
+	return minmag;
     }
 
     public double getLat(){
-        return this.lat;
+	return lat;
     }
 
     public double getLon(){
-        return this.lon;
+	return lon;
     }
 
     public String getLocation(){
-        return this.location;
+	return location;
     }
 
-   
     
-    public void setDistance(int d){
-	this.distance = d;
+    public void setDistance(int distant){
+	distance = distant;
     }
     
-    public void setMinmag(int m){
-	this.minmag = m;
+    public void setMinmag(int MM){
+	minmag = MM;
     }
 
-    public void setLat(double la){
-        this.lat = la;
+    public void setLat(double Latitude){
+	lat = Latitude;
     }
 
-    public void setLon(double lo){
-        this.lon = lo;
+    public void setLon(double Longtitude){
+	lon = Longtitude;
     }
 
-    public void setLocation(String loc){
-        this.location = loc;
+    public void setLocation(String Location){
+	location = Location;
     }
+
 }

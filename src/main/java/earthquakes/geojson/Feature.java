@@ -1,4 +1,3 @@
-
 package earthquakes.geojson;
 
 public class Feature {

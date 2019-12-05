@@ -1,12 +1,11 @@
 package earthquakes.services;
 
-
 import java.util.Arrays;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.web.client.RestTemplate;
+
+
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -24,8 +23,7 @@ public class EarthquakeQueryService {
     private Logger logger = LoggerFactory.getLogger(EarthquakeQueryService.class);
 
     public String getJSON(int distance, int minmag, double lat, double lon) {
-
-	 RestTemplate restTemplate = new RestTemplate();
+        RestTemplate restTemplate = new RestTemplate();
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -34,7 +32,6 @@ public class EarthquakeQueryService {
         HttpEntity<String> entity = new HttpEntity<>("body", headers);
 
         String uri = "https://earthquake.usgs.gov/fdsnws/event/1/query";
-        
         String params = String.format("?format=geojson&minmagnitude=%d&maxradiuskm=%d&latitude=%f&longitude=%f",
            minmag,distance,lat,lon);
 
@@ -54,4 +51,4 @@ public class EarthquakeQueryService {
         return retVal;
     }
 
-} 
+}

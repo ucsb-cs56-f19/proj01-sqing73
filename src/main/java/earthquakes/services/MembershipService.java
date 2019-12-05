@@ -3,23 +3,22 @@ package earthquakes.services;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 
 public interface MembershipService {
-
-   /** check membership
+    
+    /** check membership
      * @param oAuth2AuthenticationToken oauth token 
      * @return is current logged in user a member but NOT an admin of the github org?
      * */
     public boolean isMember(OAuth2AuthenticationToken oAuth2AuthenticationToken);
 
-    /** check admin
-     * @param oAuth2AuthenticationToken oauth token
-     * @return is current logged in user a member of the github org? 
+    /** check membership
+     * @param oAuth2AuthenticationToken oauth token 
+     * @return is current logged in user a Admin of the github org?
      * */
     public boolean isAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken);
 
-    /** check membership or admin
-     * @param oAuth2AuthenticationToken oauth token
-     * @return is current logged in user a member or admin of the
-     * github org?
+    /** check membership
+     * @param oAuth2AuthenticationToken oauth token 
+     * @return is current logged in user a member or an admin of the github org?
      * */
     default public boolean isMemberOrAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
         return isMember(oAuth2AuthenticationToken) || isAdmin(oAuth2AuthenticationToken);

@@ -45,17 +45,17 @@ public class GithubOrgMembershipService implements MembershipService {
     }
 
     /** is current logged in user a member of the github org */
+    
     public boolean isAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
-<span class="nc" id="L49">        return hasRole(oAuth2AuthenticationToken, &quot;admin&quot;);</span>
+<span class="nc" id="L50">        return hasRole(oAuth2AuthenticationToken, &quot;admin&quot;);</span>
     }
 
     /**
      * is current logged in user has role
-     * 
      * @param oauthToken oauth token
-     * @param roleToTest &quot;member&quot; or &quot;admin&quot; 
+     * @param roleToTest &quot;member&quot; or &quot;admin&quot;
      * @return if the current logged in user has that role
-     */
+     * */
 
     public boolean hasRole(OAuth2AuthenticationToken oauthToken, String roleToTest) {
 <span class="nc bnc" id="L61" title="All 2 branches missed.">        if (oauthToken == null) {</span>
@@ -127,7 +127,7 @@ public class GithubOrgMembershipService implements MembershipService {
 <span class="nc" id="L127">            logger.error(&quot;Exception&quot;,e);</span>
         }
 <span class="nc" id="L129">        return false;</span>
+	
     }
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

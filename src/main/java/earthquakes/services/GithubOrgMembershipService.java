@@ -45,17 +45,17 @@ public class GithubOrgMembershipService implements MembershipService {
     }
 
     /** is current logged in user a member of the github org */
+    
     public boolean isAdmin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
         return hasRole(oAuth2AuthenticationToken, "admin");
     }
 
     /**
      * is current logged in user has role
-     * 
      * @param oauthToken oauth token
-     * @param roleToTest "member" or "admin" 
+     * @param roleToTest "member" or "admin"
      * @return if the current logged in user has that role
-     */
+     * */
 
     public boolean hasRole(OAuth2AuthenticationToken oauthToken, String roleToTest) {
         if (oauthToken == null) {
@@ -127,6 +127,6 @@ public class GithubOrgMembershipService implements MembershipService {
             logger.error("Exception",e);
         }
         return false;
+	
     }
-
 }
