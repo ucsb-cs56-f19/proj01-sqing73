@@ -34,5 +34,5 @@ public class Location {
     public void setLongitude(double lon) { this.longitude = lon; }
 
     public String getUid(){ return uid; }
-    public void setUid(string uid){ this uid = uid; }
+    public void setUid(String uid){ this.uid = uid; }
 }
