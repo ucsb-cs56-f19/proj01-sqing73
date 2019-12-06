@@ -36,7 +36,7 @@ public class LocationsController {
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
     public LocationsController(LocationRepository locationRepository){
-	this.locationRepository = locationRepository;
+	    this.locationRepository = locationRepository;
     }
     
     
@@ -50,7 +50,6 @@ public class LocationsController {
     @GetMapping("/locations/results")
     public String getLocationsResults(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken,
           LocSearch locSearch) {
-
       LocationQueryService l = new LocationQueryService();
       model.addAttribute("locSearch", locSearch);
       String json = l.getJSON(locSearch.getLocation());
@@ -61,26 +60,36 @@ public class LocationsController {
     }
 
     @GetMapping("/locations")
-    public String index(Model model) {
+    public String index(Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+        String u = oAuth2AuthenticationToken.getPrincipal().getAttributes().get("id").toString();
+        Iterable<Location> locations = locationRepository.findByUid(u);
 	
-        Iterable<Location> locations = locationRepository.findAll();
         model.addAttribute("locations", locations);
         return "locations/index";
     }
 
     @PostMapping("/locations/add")
-    public String add(Location location, Model model) {
-      locationRepository.save(location);
-      model.addAttribute("locations", locationRepository.findAll());
-      return "locations/index";
+    public String add(Location location, Model model, OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+        String u = oAuth2AuthenticationToken.getPrincipal().getAttributes().get("id").toString();
+        location.setUid(u);
+        locationRepository.save(location);
+        model.addAttribute("locations", locationRepository.findByUid(u));
+        return "locations/index";
     }
 
     @DeleteMapping("/locations/delete/{id}")
-    public String delete(@PathVariable("id") long id, Model model) {
-        Location location = locationRepository.findById(id)
-            .orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
-        locationRepository.delete(location);
-        model.addAttribute("locations", locationRepository.findAll());
-        return "locations/index";
-}
+    public String delete(@PathVariable("id") long id, Model model,OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+        String u = oAuth2AuthenticationToken.getPrincipal().getAttributes().get("id").toString();
+	Location location = locationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
+	locationRepository.delete(location);
+	model.addAttribute("locations", locationRepository.findByUid(u));
+	return "locations/index";
+    }
+
+    @GetMapping("/locations/admin")
+    public String admin(Model model) {
+	Iterable<Location> locations = locationRepository.findAll();
+        model.addAttribute("locations", locations);
+        return "locations/admin";
+    }
 }
