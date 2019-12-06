@@ -1,3 +1,4 @@
+https://travis-ci.org/ucsb-cs56-f19/proj01-sqing73.svg?branch=master
 
 javadoc: https://ucsb-cs56-f19.github.io/proj01-sqing73/
 
