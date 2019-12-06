@@ -73,15 +73,16 @@ public class LocationsController {
         String u = oAuth2AuthenticationToken.getPrincipal().getAttributes().get("id").toString();
         location.setUid(u);
         locationRepository.save(location);
-        model.addAttribute("locations", locationRepository.findAll());
+        model.addAttribute("locations", locationRepository.findByUid(u));
         return "locations/index";
     }
 
     @DeleteMapping("/locations/delete/{id}")
-    public String delete(@PathVariable("id") long id, Model model) {
+    public String delete(@PathVariable("id") long id, Model model,OAuth2AuthenticationToken oAuth2AuthenticationToken) {
+        String u = oAuth2AuthenticationToken.getPrincipal().getAttributes().get("id").toString();
 	Location location = locationRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid courseoffering Id:" + id));
 	locationRepository.delete(location);
-	model.addAttribute("locations", locationRepository.findAll());
+	model.addAttribute("locations", locationRepository.findByUid(u));
 	return "locations/index";
     }
 
